@@ -1,0 +1,287 @@
+[
+  {
+    "id": "cards-clean",
+    "reference": "cards-master.png",
+    "candidate": "cards-clean.png",
+    "positive": false,
+    "defects": []
+  },
+  {
+    "id": "cards-logo",
+    "reference": "cards-master.png",
+    "candidate": "cards-logo.png",
+    "positive": true,
+    "defects": [
+      "logo"
+    ]
+  },
+  {
+    "id": "cards-shift",
+    "reference": "cards-master.png",
+    "candidate": "cards-shift.png",
+    "positive": true,
+    "defects": [
+      "shift"
+    ]
+  },
+  {
+    "id": "cards-legal",
+    "reference": "cards-master.png",
+    "candidate": "cards-legal.png",
+    "positive": true,
+    "defects": [
+      "legal"
+    ]
+  },
+  {
+    "id": "cards-color",
+    "reference": "cards-master.png",
+    "candidate": "cards-color.png",
+    "positive": true,
+    "defects": [
+      "color"
+    ]
+  },
+  {
+    "id": "cards-clip",
+    "reference": "cards-master.png",
+    "candidate": "cards-clip.png",
+    "positive": true,
+    "defects": [
+      "clip"
+    ]
+  },
+  {
+    "id": "cards-barcode",
+    "reference": "cards-master.png",
+    "candidate": "cards-barcode.png",
+    "positive": true,
+    "defects": [
+      "barcode"
+    ]
+  },
+  {
+    "id": "cards-offset",
+    "reference": "cards-master.png",
+    "candidate": "cards-offset.png",
+    "positive": true,
+    "defects": [
+      "offset"
+    ]
+  },
+  {
+    "id": "cards-scale",
+    "reference": "cards-master.png",
+    "candidate": "cards-scale.png",
+    "positive": true,
+    "defects": [
+      "scale"
+    ]
+  },
+  {
+    "id": "cards-art",
+    "reference": "cards-master.png",
+    "candidate": "cards-art.png",
+    "positive": true,
+    "defects": [
+      "art"
+    ]
+  },
+  {
+    "id": "cards-jpeg",
+    "reference": "cards-master.png",
+    "candidate": "cards-jpeg.jpg",
+    "positive": false,
+    "defects": []
+  },
+  {
+    "id": "label-clean",
+    "reference": "label-master.png",
+    "candidate": "label-clean.png",
+    "positive": false,
+    "defects": []
+  },
+  {
+    "id": "label-logo",
+    "reference": "label-master.png",
+    "candidate": "label-logo.png",
+    "positive": true,
+    "defects": [
+      "logo"
+    ]
+  },
+  {
+    "id": "label-shift",
+    "reference": "label-master.png",
+    "candidate": "label-shift.png",
+    "positive": true,
+    "defects": [
+      "shift"
+    ]
+  },
+  {
+    "id": "label-copy",
+    "reference": "label-master.png",
+    "candidate": "label-copy.png",
+    "positive": true,
+    "defects": [
+      "copy"
+    ]
+  },
+  {
+    "id": "label-color",
+    "reference": "label-master.png",
+    "candidate": "label-color.png",
+    "positive": true,
+    "defects": [
+      "color"
+    ]
+  },
+  {
+    "id": "label-clip",
+    "reference": "label-master.png",
+    "candidate": "label-clip.png",
+    "positive": true,
+    "defects": [
+      "clip"
+    ]
+  },
+  {
+    "id": "label-barcode",
+    "reference": "label-master.png",
+    "candidate": "label-barcode.png",
+    "positive": true,
+    "defects": [
+      "barcode"
+    ]
+  },
+  {
+    "id": "label-offset",
+    "reference": "label-master.png",
+    "candidate": "label-offset.png",
+    "positive": true,
+    "defects": [
+      "offset"
+    ]
+  },
+  {
+    "id": "label-scale",
+    "reference": "label-master.png",
+    "candidate": "label-scale.png",
+    "positive": true,
+    "defects": [
+      "scale"
+    ]
+  },
+  {
+    "id": "label-art",
+    "reference": "label-master.png",
+    "candidate": "label-art.png",
+    "positive": true,
+    "defects": [
+      "art"
+    ]
+  },
+  {
+    "id": "label-jpeg",
+    "reference": "label-master.png",
+    "candidate": "label-jpeg.jpg",
+    "positive": false,
+    "defects": []
+  },
+  {
+    "id": "toy-clean",
+    "reference": "toy-master.png",
+    "candidate": "toy-clean.png",
+    "positive": false,
+    "defects": []
+  },
+  {
+    "id": "toy-logo",
+    "reference": "toy-master.png",
+    "candidate": "toy-logo.png",
+    "positive": true,
+    "defects": [
+      "logo"
+    ]
+  },
+  {
+    "id": "toy-shift",
+    "reference": "toy-master.png",
+    "candidate": "toy-shift.png",
+    "positive": true,
+    "defects": [
+      "shift"
+    ]
+  },
+  {
+    "id": "toy-legal",
+    "reference": "toy-master.png",
+    "candidate": "toy-legal.png",
+    "positive": true,
+    "defects": [
+      "legal"
+    ]
+  },
+  {
+    "id": "toy-color",
+    "reference": "toy-master.png",
+    "candidate": "toy-color.png",
+    "positive": true,
+    "defects": [
+      "color"
+    ]
+  },
+  {
+    "id": "toy-clip",
+    "reference": "toy-master.png",
+    "candidate": "toy-clip.png",
+    "positive": true,
+    "defects": [
+      "clip"
+    ]
+  },
+  {
+    "id": "toy-barcode",
+    "reference": "toy-master.png",
+    "candidate": "toy-barcode.png",
+    "positive": true,
+    "defects": [
+      "barcode"
+    ]
+  },
+  {
+    "id": "toy-offset",
+    "reference": "toy-master.png",
+    "candidate": "toy-offset.png",
+    "positive": true,
+    "defects": [
+      "offset"
+    ]
+  },
+  {
+    "id": "toy-scale",
+    "reference": "toy-master.png",
+    "candidate": "toy-scale.png",
+    "positive": true,
+    "defects": [
+      "scale"
+    ]
+  },
+  {
+    "id": "toy-art",
+    "reference": "toy-master.png",
+    "candidate": "toy-art.png",
+    "positive": true,
+    "defects": [
+      "art"
+    ]
+  },
+  {
+    "id": "toy-jpeg",
+    "reference": "toy-master.png",
+    "candidate": "toy-jpeg.jpg",
+    "positive": false,
+    "defects": []
+  }
+]

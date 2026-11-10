@@ -1,0 +1,1069 @@
+{
+  "version": "0.1.0",
+  "timestamp": "2026-11-10T13:26:43.901305+00:00",
+  "status": "REVIEW REQUIRED",
+  "config": {
+    "delta_e": 6,
+    "min_area": 45,
+    "fail_area_percent": 8,
+    "min_registration": 0.55,
+    "trim": [
+      30,
+      30,
+      770,
+      1030
+    ],
+    "bleed_px": 12,
+    "safe_px": 24,
+    "color_regions": [],
+    "ocr": true,
+    "barcode": true,
+    "ai": false
+  },
+  "registration": {
+    "method": "ORB + RANSAC homography",
+    "confidence": 0.9014,
+    "inlier_ratio": 0.901419878296146,
+    "coverage": 0.599085792847071,
+    "matches": 2465,
+    "rotation_degrees": 0,
+    "matrix": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "translation_px": [
+      0.0,
+      0.0
+    ],
+    "scale_x": 1.0,
+    "scale_y": 1.0,
+    "source_size_ratio": [
+      1.0,
+      1.0
+    ]
+  },
+  "metrics": {
+    "changed_area_percent": 2.1548,
+    "mean_delta_e": 0.6706,
+    "p95_delta_e": 0.0,
+    "processing_seconds": 0.604
+  },
+  "color_samples": [],
+  "findings": [
+    {
+      "id": "V001",
+      "kind": "visual",
+      "severity": "major",
+      "bbox": [
+        589,
+        289,
+        727,
+        392
+      ],
+      "area_px": 9190,
+      "mean_delta_e": 35.637,
+      "title": "Artwork difference",
+      "recommendation": "Compare evidence for missing, added, shifted, or changed artwork. Pixel evidence alone does not identify manufacturing cause."
+    },
+    {
+      "id": "V002",
+      "kind": "visual",
+      "severity": "minor",
+      "bbox": [
+        365,
+        365,
+        436,
+        471
+      ],
+      "area_px": 3313,
+      "mean_delta_e": 33.306,
+      "title": "Artwork difference",
+      "recommendation": "Compare evidence for missing, added, shifted, or changed artwork. Pixel evidence alone does not identify manufacturing cause."
+    },
+    {
+      "id": "V003",
+      "kind": "visual",
+      "severity": "minor",
+      "bbox": [
+        69,
+        865,
+        84,
+        880
+      ],
+      "area_px": 157,
+      "mean_delta_e": 16.3,
+      "title": "Artwork difference",
+      "recommendation": "Compare evidence for missing, added, shifted, or changed artwork. Pixel evidence alone does not identify manufacturing cause."
+    },
+    {
+      "id": "V004",
+      "kind": "visual",
+      "severity": "minor",
+      "bbox": [
+        88,
+        865,
+        128,
+        880
+      ],
+      "area_px": 466,
+      "mean_delta_e": 23.021,
+      "title": "Artwork difference",
+      "recommendation": "Compare evidence for missing, added, shifted, or changed artwork. Pixel evidence alone does not identify manufacturing cause."
+    },
+    {
+      "id": "V005",
+      "kind": "visual",
+      "severity": "minor",
+      "bbox": [
+        133,
+        865,
+        212,
+        880
+      ],
+      "area_px": 840,
+      "mean_delta_e": 22.691,
+      "title": "Artwork difference",
+      "recommendation": "Compare evidence for missing, added, shifted, or changed artwork. Pixel evidence alone does not identify manufacturing cause."
+    },
+    {
+      "id": "V006",
+      "kind": "visual",
+      "severity": "minor",
+      "bbox": [
+        218,
+        865,
+        310,
+        880
+      ],
+      "area_px": 830,
+      "mean_delta_e": 24.418,
+      "title": "Artwork difference",
+      "recommendation": "Compare evidence for missing, added, shifted, or changed artwork. Pixel evidence alone does not identify manufacturing cause."
+    },
+    {
+      "id": "V007",
+      "kind": "visual",
+      "severity": "minor",
+      "bbox": [
+        316,
+        865,
+        383,
+        880
+      ],
+      "area_px": 691,
+      "mean_delta_e": 23.985,
+      "title": "Artwork difference",
+      "recommendation": "Compare evidence for missing, added, shifted, or changed artwork. Pixel evidence alone does not identify manufacturing cause."
+    },
+    {
+      "id": "V008",
+      "kind": "visual",
+      "severity": "minor",
+      "bbox": [
+        70,
+        893,
+        79,
+        907
+      ],
+      "area_px": 69,
+      "mean_delta_e": 18.947,
+      "title": "Artwork difference",
+      "recommendation": "Compare evidence for missing, added, shifted, or changed artwork. Pixel evidence alone does not identify manufacturing cause."
+    },
+    {
+      "id": "V009",
+      "kind": "visual",
+      "severity": "minor",
+      "bbox": [
+        82,
+        893,
+        116,
+        907
+      ],
+      "area_px": 295,
+      "mean_delta_e": 18.618,
+      "title": "Artwork difference",
+      "recommendation": "Compare evidence for missing, added, shifted, or changed artwork. Pixel evidence alone does not identify manufacturing cause."
+    },
+    {
+      "id": "V010",
+      "kind": "visual",
+      "severity": "minor",
+      "bbox": [
+        119,
+        893,
+        151,
+        907
+      ],
+      "area_px": 293,
+      "mean_delta_e": 18.212,
+      "title": "Artwork difference",
+      "recommendation": "Compare evidence for missing, added, shifted, or changed artwork. Pixel evidence alone does not identify manufacturing cause."
+    },
+    {
+      "id": "V011",
+      "kind": "visual",
+      "severity": "minor",
+      "bbox": [
+        157,
+        893,
+        222,
+        907
+      ],
+      "area_px": 633,
+      "mean_delta_e": 19.41,
+      "title": "Artwork difference",
+      "recommendation": "Compare evidence for missing, added, shifted, or changed artwork. Pixel evidence alone does not identify manufacturing cause."
+    },
+    {
+      "id": "V012",
+      "kind": "visual",
+      "severity": "minor",
+      "bbox": [
+        233,
+        893,
+        268,
+        907
+      ],
+      "area_px": 287,
+      "mean_delta_e": 19.094,
+      "title": "Artwork difference",
+      "recommendation": "Compare evidence for missing, added, shifted, or changed artwork. Pixel evidence alone does not identify manufacturing cause."
+    },
+    {
+      "id": "V013",
+      "kind": "visual",
+      "severity": "minor",
+      "bbox": [
+        273,
+        893,
+        308,
+        907
+      ],
+      "area_px": 308,
+      "mean_delta_e": 19.082,
+      "title": "Artwork difference",
+      "recommendation": "Compare evidence for missing, added, shifted, or changed artwork. Pixel evidence alone does not identify manufacturing cause."
+    },
+    {
+      "id": "V014",
+      "kind": "visual",
+      "severity": "minor",
+      "bbox": [
+        313,
+        893,
+        346,
+        907
+      ],
+      "area_px": 315,
+      "mean_delta_e": 18.449,
+      "title": "Artwork difference",
+      "recommendation": "Compare evidence for missing, added, shifted, or changed artwork. Pixel evidence alone does not identify manufacturing cause."
+    },
+    {
+      "id": "V015",
+      "kind": "visual",
+      "severity": "minor",
+      "bbox": [
+        377,
+        893,
+        417,
+        907
+      ],
+      "area_px": 379,
+      "mean_delta_e": 18.728,
+      "title": "Artwork difference",
+      "recommendation": "Compare evidence for missing, added, shifted, or changed artwork. Pixel evidence alone does not identify manufacturing cause."
+    },
+    {
+      "id": "V016",
+      "kind": "visual",
+      "severity": "minor",
+      "bbox": [
+        346,
+        894,
+        371,
+        907
+      ],
+      "area_px": 207,
+      "mean_delta_e": 20.191,
+      "title": "Artwork difference",
+      "recommendation": "Compare evidence for missing, added, shifted, or changed artwork. Pixel evidence alone does not identify manufacturing cause."
+    },
+    {
+      "id": "T017",
+      "kind": "text",
+      "severity": "review",
+      "bbox": [
+        404,
+        295,
+        452,
+        308
+      ],
+      "title": "Possible text replace",
+      "evidence": {
+        "operation": "replace",
+        "reference": "\u00a9 2026 MAGNUS FICTIONAL GOODS CONCEPT SAMPLE. NOT FOR RETAIL SALE.",
+        "candidate": "= =",
+        "confidence": 0.61,
+        "reference_boxes": [
+          [
+            70,
+            866,
+            83,
+            879
+          ],
+          [
+            89,
+            866,
+            127,
+            879
+          ],
+          [
+            134,
+            866,
+            211,
+            879
+          ],
+          [
+            218,
+            866,
+            310,
+            879
+          ],
+          [
+            317,
+            866,
+            382,
+            879
+          ],
+          [
+            71,
+            894,
+            151,
+            906
+          ],
+          [
+            157,
+            894,
+            222,
+            906
+          ],
+          [
+            234,
+            894,
+            268,
+            906
+          ],
+          [
+            274,
+            894,
+            308,
+            906
+          ],
+          [
+            314,
+            894,
+            371,
+            906
+          ],
+          [
+            377,
+            894,
+            417,
+            906
+          ]
+        ],
+        "candidate_boxes": [
+          [
+            404,
+            295,
+            413,
+            300
+          ],
+          [
+            443,
+            303,
+            452,
+            308
+          ]
+        ]
+      },
+      "recommendation": "Visually confirm OCR substitution, addition, or deletion."
+    }
+  ],
+  "text": {
+    "available": true,
+    "reference": {
+      "available": true,
+      "words": [
+        {
+          "text": "MAGNUS",
+          "confidence": 0.92,
+          "bbox": [
+            76,
+            76,
+            161,
+            91
+          ]
+        },
+        {
+          "text": "/",
+          "confidence": 0.92,
+          "bbox": [
+            168,
+            76,
+            174,
+            91
+          ]
+        },
+        {
+          "text": "ORIGINAL",
+          "confidence": 0.94,
+          "bbox": [
+            181,
+            71,
+            276,
+            91
+          ]
+        },
+        {
+          "text": "GOODS",
+          "confidence": 0.96,
+          "bbox": [
+            283,
+            76,
+            356,
+            91
+          ]
+        },
+        {
+          "text": "ORBIT",
+          "confidence": 0.96,
+          "bbox": [
+            77,
+            135,
+            271,
+            228
+          ]
+        },
+        {
+          "text": "CLUB",
+          "confidence": 0.92,
+          "bbox": [
+            291,
+            157,
+            429,
+            228
+          ]
+        },
+        {
+          "text": ".",
+          "confidence": 0.84,
+          "bbox": [
+            464,
+            162,
+            498,
+            212
+          ]
+        },
+        {
+          "text": "COLLECTIBLE",
+          "confidence": 0.96,
+          "bbox": [
+            79,
+            236,
+            226,
+            252
+          ]
+        },
+        {
+          "text": "EXPLORER",
+          "confidence": 0.96,
+          "bbox": [
+            235,
+            223,
+            354,
+            253
+          ]
+        },
+        {
+          "text": "CARDS",
+          "confidence": 0.95,
+          "bbox": [
+            361,
+            219,
+            437,
+            252
+          ]
+        },
+        {
+          "text": "\u00a9",
+          "confidence": 0.95,
+          "bbox": [
+            70,
+            866,
+            83,
+            879
+          ]
+        },
+        {
+          "text": "2026",
+          "confidence": 0.95,
+          "bbox": [
+            89,
+            866,
+            127,
+            879
+          ]
+        },
+        {
+          "text": "MAGNUS",
+          "confidence": 0.96,
+          "bbox": [
+            134,
+            866,
+            211,
+            879
+          ]
+        },
+        {
+          "text": "FICTIONAL",
+          "confidence": 0.95,
+          "bbox": [
+            218,
+            866,
+            310,
+            879
+          ]
+        },
+        {
+          "text": "GOODS",
+          "confidence": 0.96,
+          "bbox": [
+            317,
+            866,
+            382,
+            879
+          ]
+        },
+        {
+          "text": "CONCEPT",
+          "confidence": 0.95,
+          "bbox": [
+            71,
+            894,
+            151,
+            906
+          ]
+        },
+        {
+          "text": "SAMPLE.",
+          "confidence": 0.95,
+          "bbox": [
+            157,
+            894,
+            222,
+            906
+          ]
+        },
+        {
+          "text": "NOT",
+          "confidence": 0.96,
+          "bbox": [
+            234,
+            894,
+            268,
+            906
+          ]
+        },
+        {
+          "text": "FOR",
+          "confidence": 0.96,
+          "bbox": [
+            274,
+            894,
+            308,
+            906
+          ]
+        },
+        {
+          "text": "RETAIL",
+          "confidence": 0.95,
+          "bbox": [
+            314,
+            894,
+            371,
+            906
+          ]
+        },
+        {
+          "text": "SALE.",
+          "confidence": 0.61,
+          "bbox": [
+            377,
+            894,
+            417,
+            906
+          ]
+        },
+        {
+          "text": "8",
+          "confidence": 0.94,
+          "bbox": [
+            71,
+            961,
+            80,
+            976
+          ]
+        },
+        {
+          "text": "CARDS",
+          "confidence": 0.92,
+          "bbox": [
+            88,
+            961,
+            154,
+            976
+          ]
+        },
+        {
+          "text": "/",
+          "confidence": 0.92,
+          "bbox": [
+            161,
+            961,
+            166,
+            976
+          ]
+        },
+        {
+          "text": "SERIES",
+          "confidence": 0.96,
+          "bbox": [
+            174,
+            961,
+            244,
+            976
+          ]
+        },
+        {
+          "text": "01",
+          "confidence": 0.95,
+          "bbox": [
+            252,
+            961,
+            270,
+            976
+          ]
+        }
+      ],
+      "excluded_barcode_regions": [
+        [
+          505,
+          899,
+          710,
+          1028
+        ]
+      ]
+    },
+    "candidate": {
+      "available": true,
+      "words": [
+        {
+          "text": "MAGNUS",
+          "confidence": 0.92,
+          "bbox": [
+            76,
+            76,
+            161,
+            91
+          ]
+        },
+        {
+          "text": "/",
+          "confidence": 0.92,
+          "bbox": [
+            168,
+            76,
+            174,
+            91
+          ]
+        },
+        {
+          "text": "ORIGINAL",
+          "confidence": 0.94,
+          "bbox": [
+            181,
+            71,
+            276,
+            91
+          ]
+        },
+        {
+          "text": "GOODS",
+          "confidence": 0.96,
+          "bbox": [
+            283,
+            76,
+            356,
+            91
+          ]
+        },
+        {
+          "text": "ORBIT",
+          "confidence": 0.96,
+          "bbox": [
+            77,
+            135,
+            271,
+            228
+          ]
+        },
+        {
+          "text": "CLUB",
+          "confidence": 0.92,
+          "bbox": [
+            291,
+            157,
+            429,
+            228
+          ]
+        },
+        {
+          "text": ".",
+          "confidence": 0.84,
+          "bbox": [
+            464,
+            162,
+            498,
+            212
+          ]
+        },
+        {
+          "text": "COLLECTIBLE",
+          "confidence": 0.96,
+          "bbox": [
+            79,
+            236,
+            226,
+            252
+          ]
+        },
+        {
+          "text": "EXPLORER",
+          "confidence": 0.96,
+          "bbox": [
+            235,
+            223,
+            354,
+            253
+          ]
+        },
+        {
+          "text": "CARDS",
+          "confidence": 0.95,
+          "bbox": [
+            361,
+            219,
+            437,
+            252
+          ]
+        },
+        {
+          "text": "=",
+          "confidence": 0.79,
+          "bbox": [
+            404,
+            295,
+            413,
+            300
+          ]
+        },
+        {
+          "text": "=",
+          "confidence": 0.79,
+          "bbox": [
+            443,
+            303,
+            452,
+            308
+          ]
+        },
+        {
+          "text": "8",
+          "confidence": 0.94,
+          "bbox": [
+            71,
+            961,
+            80,
+            976
+          ]
+        },
+        {
+          "text": "CARDS",
+          "confidence": 0.92,
+          "bbox": [
+            88,
+            961,
+            154,
+            976
+          ]
+        },
+        {
+          "text": "/",
+          "confidence": 0.92,
+          "bbox": [
+            161,
+            961,
+            166,
+            976
+          ]
+        },
+        {
+          "text": "SERIES",
+          "confidence": 0.96,
+          "bbox": [
+            174,
+            961,
+            244,
+            976
+          ]
+        },
+        {
+          "text": "01",
+          "confidence": 0.95,
+          "bbox": [
+            252,
+            961,
+            270,
+            976
+          ]
+        }
+      ],
+      "excluded_barcode_regions": [
+        [
+          505,
+          899,
+          710,
+          1028
+        ]
+      ]
+    },
+    "changes": [
+      {
+        "operation": "replace",
+        "reference": "\u00a9 2026 MAGNUS FICTIONAL GOODS CONCEPT SAMPLE. NOT FOR RETAIL SALE.",
+        "candidate": "= =",
+        "confidence": 0.61,
+        "reference_boxes": [
+          [
+            70,
+            866,
+            83,
+            879
+          ],
+          [
+            89,
+            866,
+            127,
+            879
+          ],
+          [
+            134,
+            866,
+            211,
+            879
+          ],
+          [
+            218,
+            866,
+            310,
+            879
+          ],
+          [
+            317,
+            866,
+            382,
+            879
+          ],
+          [
+            71,
+            894,
+            151,
+            906
+          ],
+          [
+            157,
+            894,
+            222,
+            906
+          ],
+          [
+            234,
+            894,
+            268,
+            906
+          ],
+          [
+            274,
+            894,
+            308,
+            906
+          ],
+          [
+            314,
+            894,
+            371,
+            906
+          ],
+          [
+            377,
+            894,
+            417,
+            906
+          ]
+        ],
+        "candidate_boxes": [
+          [
+            404,
+            295,
+            413,
+            300
+          ],
+          [
+            443,
+            303,
+            452,
+            308
+          ]
+        ]
+      }
+    ],
+    "note": "OCR suggestions require visual confirmation; confidence is engine confidence, not probability of a defect."
+  },
+  "geometry": [
+    {
+      "check": "registration coverage",
+      "status": "clear",
+      "uncovered_percent": 0.0,
+      "note": "Uncovered transformed border suggests clipping or framing change; not proof of ink clipping."
+    },
+    {
+      "check": "bleed",
+      "status": "clear",
+      "note": "Checks canvas extent around trim only; intended ink continuity requires human review.",
+      "required_px": 12
+    },
+    {
+      "check": "safe zone",
+      "status": "clear",
+      "words": [],
+      "note": "OCR text bounds only; graphical safe areas and irregular dielines are unsupported."
+    }
+  ],
+  "barcode": {
+    "available": true,
+    "reference": {
+      "available": true,
+      "codes": [
+        {
+          "text": "5901234123457",
+          "format": "EAN-13",
+          "position": "513x907 702x907 702x978 513x978"
+        }
+      ]
+    },
+    "candidate": {
+      "available": true,
+      "codes": [
+        {
+          "text": "5901234123457",
+          "format": "EAN-13",
+          "position": "513x907 702x907 702x978 513x978"
+        }
+      ]
+    },
+    "status": "clear"
+  },
+  "warnings": [
+    "Automated screening is not production approval.",
+    "Preview RGB color is not certified Pantone or press-color measurement.",
+    "Registration confidence is a heuristic based on feature support, not a calibrated probability.",
+    "Global registration cannot isolate plate-to-plate print misregistration."
+  ],
+  "ai": {
+    "available": false,
+    "reason": "Not requested"
+  },
+  "id": "sample-card-pack",
+  "files": {
+    "reference": {
+      "id": "f13047da330647e3957a9dc63ec656a0",
+      "name": "cards-master.png",
+      "format": "PNG",
+      "bytes": 43131,
+      "sha256": "45d693834fc622a35615b3fce981d1125b0f665b03d9ddc8a07482c1581de6a6",
+      "pages": [
+        {
+          "width": 800,
+          "height": 1060,
+          "mode": "RGB",
+          "dpi": [
+            299.9994,
+            299.9994
+          ],
+          "icc": null,
+          "preview_width": 800,
+          "preview_height": 1060,
+          "preview": "/api/assets/f13047da330647e3957a9dc63ec656a0/pages/0"
+        }
+      ],
+      "warnings": [
+        "Page 1: no embedded ICC profile; RGB preview is assumed sRGB, CMYK uses an uncalibrated conversion"
+      ]
+    },
+    "candidate": {
+      "id": "1fa5dddea3cd44fabb840e200745512b",
+      "name": "cards-defective.png",
+      "format": "PNG",
+      "bytes": 35353,
+      "sha256": "64fc1564759ca6b51cba1023641eb5ecf19a9b1b1302c5f6d52589bba6fd9054",
+      "pages": [
+        {
+          "width": 800,
+          "height": 1060,
+          "mode": "RGB",
+          "dpi": [
+            0.0,
+            0.0
+          ],
+          "icc": null,
+          "preview_width": 800,
+          "preview_height": 1060,
+          "preview": "/api/assets/1fa5dddea3cd44fabb840e200745512b/pages/0"
+        }
+      ],
+      "warnings": [
+        "Page 1: no embedded ICC profile; RGB preview is assumed sRGB, CMYK uses an uncalibrated conversion"
+      ]
+    }
+  },
+  "pages": {
+    "reference": 0,
+    "candidate": 0
+  }
+}

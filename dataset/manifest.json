@@ -1,0 +1,92 @@
+[
+  {
+    "id": "cards",
+    "name": "Collectible card pack",
+    "reference": "cards-master.png",
+    "clean": "cards-clean.png",
+    "candidate": "cards-defective.png",
+    "config": {
+      "trim": [
+        30,
+        30,
+        770,
+        1030
+      ],
+      "bleed_px": 12,
+      "safe_px": 20,
+      "color_regions": [
+        [
+          240,
+          520,
+          290,
+          570
+        ]
+      ]
+    },
+    "injected": [
+      "legal",
+      "shift",
+      "art"
+    ]
+  },
+  {
+    "id": "label",
+    "name": "Consumer product label",
+    "reference": "label-master.png",
+    "clean": "label-clean.png",
+    "candidate": "label-defective.png",
+    "config": {
+      "trim": [
+        30,
+        30,
+        770,
+        1030
+      ],
+      "bleed_px": 12,
+      "safe_px": 20,
+      "color_regions": [
+        [
+          240,
+          520,
+          290,
+          570
+        ]
+      ]
+    },
+    "injected": [
+      "copy",
+      "color",
+      "barcode"
+    ]
+  },
+  {
+    "id": "toy",
+    "name": "Toy package",
+    "reference": "toy-master.png",
+    "clean": "toy-clean.png",
+    "candidate": "toy-defective.png",
+    "config": {
+      "trim": [
+        30,
+        30,
+        770,
+        1030
+      ],
+      "bleed_px": 12,
+      "safe_px": 20,
+      "color_regions": [
+        [
+          240,
+          520,
+          290,
+          570
+        ]
+      ]
+    },
+    "injected": [
+      "clip",
+      "safe",
+      "art"
+    ]
+  }
+]

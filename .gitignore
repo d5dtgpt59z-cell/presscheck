@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+.env
+.env.*
+!.env.example
+data/
+work/
+node_modules/
+.next/
+*.tsbuildinfo
+frontend/test-results/
+frontend/playwright-report/
+.DS_Store
+docs/e2e-results.json

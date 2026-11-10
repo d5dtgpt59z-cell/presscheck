@@ -1,0 +1,15 @@
+# Known limitations
+
+- This is an engineering prototype for local use. It is not certified press, Pantone, ISO barcode, PDF/X, regulatory/legal-copy, or manufacturing preflight validation.
+- Measurements use normalized previews with a maximum 1600-pixel edge. Original source bytes and ICC data remain available, but fine details may disappear. DPI is metadata, not a physical measurement guarantee.
+- PDF pages are rasterized. Spot colors, overprint, trapping, embedded fonts, transparency semantics, separations, PDF output intents, and vector dieline semantics are not analyzed.
+- Untagged CMYK is uncalibrated. RGB photographs/scans cannot establish absolute press colors. Lighting, paper, capture distortion, JPEG, antialiasing, and halftones can create false positives or false negatives.
+- Registration assumes a predominantly planar shared composition. Repeated patterns, sparse images, reflections and large redesigns can defeat it. Global homography can absorb true position/scale changes; transform evidence is retained. Near-identity jitter may snap to identity when direct raster fit is better.
+- Dielines are **rectangular preview coordinates**, not imported structural/CAD contours. Bleed only checks available canvas extent; it does not prove intended ink reaches the cut. Safe-zone checks cover OCR text, not logos/illustrations. No structural packaging or glue-flap analysis.
+- Plate-to-plate print registration is not independently measured. Coverage is a framing/clipping proxy; missing artwork regions are generic potential differences, not semantically proven causes.
+- OCR is English-only by default. Word-order changes, artwork, low confidence and tiny copy can produce errors. ZXing-readable barcode regions are excluded from text OCR; barcode payload comparison handles numerals instead. No expected barcode in the master means correctness is unavailable.
+- The bundled 33-pair evaluation set was used during development. It is small, synthetic, and lacks photographs, real press defects, broad languages and held-out validation. OCR substitution accuracy covers one deliberately changed title, not arbitrary legal copy.
+- Optional vision integration has HTTP contract unit tests, but no cloud/local model inference was performed without supplied credentials/model runtime. Provider compatibility, accuracy and cost depend on the configured server. Both full previews are transmitted only when the user enables AI.
+- No authentication, multi-user tenancy, access roles, audit immutability, distributed queue locking or retention management. Keep the app on localhost. Original artwork is stored unencrypted on disk. Never expose it publicly without hardening.
+- Native PDF/image codecs are in-process. Limits and container memory restrictions reduce resource risk but do not provide a hardened sandbox or per-job native execution timeout. Untrusted public upload hosting is out of scope.
+- Docker/PostgreSQL validation is tracked separately from native local validation in CI; see the validation record for observed results. No hosted application deployment is implied by GitHub publication.

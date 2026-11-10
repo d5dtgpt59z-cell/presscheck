@@ -1,0 +1,1758 @@
+{
+  "timestamp": "2026-11-10T13:21:47Z",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "python": "3.14.5",
+  "image_size": [
+    800,
+    1060
+  ],
+  "cases": 33,
+  "tp": 27,
+  "fp": 3,
+  "fn": 0,
+  "tn": 3,
+  "precision": 0.9,
+  "recall": 1.0,
+  "false_positive_rate": 0.5,
+  "registration_success_rate": 1.0,
+  "ocr_target_substitution_accuracy": 1.0,
+  "ocr_target_cases": 1,
+  "mean_processing_seconds": 0.6546666666666666,
+  "median_processing_seconds": 0.589,
+  "inconclusive": 0,
+  "rows": [
+    {
+      "id": "cards-clean",
+      "reference": "cards-master.png",
+      "candidate": "cards-clean.png",
+      "positive": false,
+      "defects": [],
+      "predicted_positive": false,
+      "status": "PASS",
+      "registration_success": true,
+      "confidence": 1.0,
+      "seconds": 2.383,
+      "text_changes": [],
+      "changed_area_percent": 0.0
+    },
+    {
+      "id": "cards-logo",
+      "reference": "cards-master.png",
+      "candidate": "cards-logo.png",
+      "positive": true,
+      "defects": [
+        "logo"
+      ],
+      "predicted_positive": true,
+      "status": "REVIEW REQUIRED",
+      "registration_success": true,
+      "confidence": 0.9951,
+      "seconds": 0.588,
+      "text_changes": [],
+      "changed_area_percent": 0.9779
+    },
+    {
+      "id": "cards-shift",
+      "reference": "cards-master.png",
+      "candidate": "cards-shift.png",
+      "positive": true,
+      "defects": [
+        "shift"
+      ],
+      "predicted_positive": true,
+      "status": "REVIEW REQUIRED",
+      "registration_success": true,
+      "confidence": 0.9745,
+      "seconds": 0.586,
+      "text_changes": [],
+      "changed_area_percent": 1.093
+    },
+    {
+      "id": "cards-legal",
+      "reference": "cards-master.png",
+      "candidate": "cards-legal.png",
+      "positive": true,
+      "defects": [
+        "legal"
+      ],
+      "predicted_positive": true,
+      "status": "REVIEW REQUIRED",
+      "registration_success": true,
+      "confidence": 0.9397,
+      "seconds": 0.601,
+      "text_changes": [
+        {
+          "operation": "replace",
+          "reference": "\u00a9 2026 MAGNUS FICTIONAL GOODS CONCEPT SAMPLE. NOT FOR RETAIL SALE.",
+          "candidate": "= =",
+          "confidence": 0.61,
+          "reference_boxes": [
+            [
+              70,
+              866,
+              83,
+              879
+            ],
+            [
+              89,
+              866,
+              127,
+              879
+            ],
+            [
+              134,
+              866,
+              211,
+              879
+            ],
+            [
+              218,
+              866,
+              310,
+              879
+            ],
+            [
+              317,
+              866,
+              382,
+              879
+            ],
+            [
+              71,
+              894,
+              151,
+              906
+            ],
+            [
+              157,
+              894,
+              222,
+              906
+            ],
+            [
+              234,
+              894,
+              268,
+              906
+            ],
+            [
+              274,
+              894,
+              308,
+              906
+            ],
+            [
+              314,
+              894,
+              371,
+              906
+            ],
+            [
+              377,
+              894,
+              417,
+              906
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              404,
+              295,
+              413,
+              300
+            ],
+            [
+              443,
+              303,
+              452,
+              308
+            ]
+          ]
+        },
+        {
+          "operation": "delete",
+          "reference": "ll ll",
+          "candidate": "",
+          "confidence": 0.51,
+          "reference_boxes": [
+            [
+              508,
+              905,
+              556,
+              981
+            ],
+            [
+              565,
+              905,
+              593,
+              981
+            ]
+          ],
+          "candidate_boxes": []
+        },
+        {
+          "operation": "replace",
+          "reference": "ll",
+          "candidate": "Il",
+          "confidence": 0.45,
+          "reference_boxes": [
+            [
+              653,
+              905,
+              696,
+              981
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              653,
+              905,
+              696,
+              981
+            ]
+          ]
+        }
+      ],
+      "changed_area_percent": 0.7244
+    },
+    {
+      "id": "cards-color",
+      "reference": "cards-master.png",
+      "candidate": "cards-color.png",
+      "positive": true,
+      "defects": [
+        "color"
+      ],
+      "predicted_positive": true,
+      "status": "FAIL",
+      "registration_success": true,
+      "confidence": 0.9995,
+      "seconds": 0.63,
+      "text_changes": [
+        {
+          "operation": "delete",
+          "reference": "ll",
+          "candidate": "",
+          "confidence": 0.51,
+          "reference_boxes": [
+            [
+              565,
+              905,
+              593,
+              981
+            ]
+          ],
+          "candidate_boxes": []
+        },
+        {
+          "operation": "replace",
+          "reference": "ll",
+          "candidate": "II",
+          "confidence": 0.47,
+          "reference_boxes": [
+            [
+              653,
+              905,
+              696,
+              981
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              653,
+              905,
+              696,
+              981
+            ]
+          ]
+        }
+      ],
+      "changed_area_percent": 16.6877
+    },
+    {
+      "id": "cards-clip",
+      "reference": "cards-master.png",
+      "candidate": "cards-clip.png",
+      "positive": true,
+      "defects": [
+        "clip"
+      ],
+      "predicted_positive": true,
+      "status": "REVIEW REQUIRED",
+      "registration_success": true,
+      "confidence": 0.9848,
+      "seconds": 0.625,
+      "text_changes": [
+        {
+          "operation": "delete",
+          "reference": "\u00a9 2026",
+          "candidate": "",
+          "confidence": 0.95,
+          "reference_boxes": [
+            [
+              70,
+              866,
+              83,
+              879
+            ],
+            [
+              89,
+              866,
+              127,
+              879
+            ]
+          ],
+          "candidate_boxes": []
+        },
+        {
+          "operation": "replace",
+          "reference": "GOODS CONCEPT",
+          "candidate": "GOODS.",
+          "confidence": 0.69,
+          "reference_boxes": [
+            [
+              317,
+              866,
+              382,
+              879
+            ],
+            [
+              71,
+              894,
+              151,
+              906
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              317,
+              866,
+              382,
+              879
+            ]
+          ]
+        },
+        {
+          "operation": "replace",
+          "reference": "8 CARDS",
+          "candidate": "RDS",
+          "confidence": 0.88,
+          "reference_boxes": [
+            [
+              71,
+              961,
+              80,
+              976
+            ],
+            [
+              88,
+              961,
+              154,
+              976
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              116,
+              961,
+              154,
+              976
+            ]
+          ]
+        },
+        {
+          "operation": "replace",
+          "reference": "ll",
+          "candidate": "lI",
+          "confidence": 0.44,
+          "reference_boxes": [
+            [
+              653,
+              905,
+              696,
+              981
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              653,
+              905,
+              696,
+              981
+            ]
+          ]
+        }
+      ],
+      "changed_area_percent": 3.4292
+    },
+    {
+      "id": "cards-barcode",
+      "reference": "cards-master.png",
+      "candidate": "cards-barcode.png",
+      "positive": true,
+      "defects": [
+        "barcode"
+      ],
+      "predicted_positive": true,
+      "status": "REVIEW REQUIRED",
+      "registration_success": true,
+      "confidence": 0.99,
+      "seconds": 0.665,
+      "text_changes": [
+        {
+          "operation": "replace",
+          "reference": "ll ll I ll 5901234123457",
+          "candidate": "tH | | l 4006381333931",
+          "confidence": 0.27,
+          "reference_boxes": [
+            [
+              508,
+              905,
+              556,
+              981
+            ],
+            [
+              565,
+              905,
+              593,
+              981
+            ],
+            [
+              607,
+              905,
+              631,
+              981
+            ],
+            [
+              653,
+              905,
+              696,
+              981
+            ],
+            [
+              547,
+              997,
+              658,
+              1008
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              508,
+              905,
+              566,
+              981
+            ],
+            [
+              585,
+              905,
+              598,
+              981
+            ],
+            [
+              649,
+              905,
+              655,
+              981
+            ],
+            [
+              663,
+              905,
+              696,
+              981
+            ],
+            [
+              547,
+              997,
+              658,
+              1008
+            ]
+          ]
+        }
+      ],
+      "changed_area_percent": 0.9544
+    },
+    {
+      "id": "cards-offset",
+      "reference": "cards-master.png",
+      "candidate": "cards-offset.png",
+      "positive": true,
+      "defects": [
+        "offset"
+      ],
+      "predicted_positive": true,
+      "status": "REVIEW REQUIRED",
+      "registration_success": true,
+      "confidence": 0.9371,
+      "seconds": 0.693,
+      "text_changes": [
+        {
+          "operation": "delete",
+          "reference": "ll",
+          "candidate": "",
+          "confidence": 0.51,
+          "reference_boxes": [
+            [
+              565,
+              905,
+              593,
+              981
+            ]
+          ],
+          "candidate_boxes": []
+        },
+        {
+          "operation": "replace",
+          "reference": "ll",
+          "candidate": "lI",
+          "confidence": 0.44,
+          "reference_boxes": [
+            [
+              653,
+              905,
+              696,
+              981
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              653,
+              905,
+              696,
+              981
+            ]
+          ]
+        }
+      ],
+      "changed_area_percent": 0.1492
+    },
+    {
+      "id": "cards-scale",
+      "reference": "cards-master.png",
+      "candidate": "cards-scale.png",
+      "positive": true,
+      "defects": [
+        "scale"
+      ],
+      "predicted_positive": true,
+      "status": "REVIEW REQUIRED",
+      "registration_success": true,
+      "confidence": 0.8558,
+      "seconds": 0.778,
+      "text_changes": [
+        {
+          "operation": "replace",
+          "reference": "ll I ll",
+          "candidate": "| Il",
+          "confidence": 0.41,
+          "reference_boxes": [
+            [
+              565,
+              905,
+              593,
+              981
+            ],
+            [
+              607,
+              905,
+              631,
+              981
+            ],
+            [
+              653,
+              905,
+              696,
+              981
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              607,
+              906,
+              631,
+              981
+            ],
+            [
+              653,
+              906,
+              696,
+              981
+            ]
+          ]
+        }
+      ],
+      "changed_area_percent": 0.9061
+    },
+    {
+      "id": "cards-art",
+      "reference": "cards-master.png",
+      "candidate": "cards-art.png",
+      "positive": true,
+      "defects": [
+        "art"
+      ],
+      "predicted_positive": true,
+      "status": "REVIEW REQUIRED",
+      "registration_success": true,
+      "confidence": 0.9962,
+      "seconds": 0.611,
+      "text_changes": [],
+      "changed_area_percent": 0.3912
+    },
+    {
+      "id": "cards-jpeg",
+      "reference": "cards-master.png",
+      "candidate": "cards-jpeg.jpg",
+      "positive": false,
+      "defects": [],
+      "predicted_positive": true,
+      "status": "REVIEW REQUIRED",
+      "registration_success": true,
+      "confidence": 0.9945,
+      "seconds": 0.641,
+      "text_changes": [
+        {
+          "operation": "replace",
+          "reference": "ll",
+          "candidate": "l",
+          "confidence": 0.51,
+          "reference_boxes": [
+            [
+              565,
+              905,
+              593,
+              981
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              565,
+              905,
+              593,
+              981
+            ]
+          ]
+        },
+        {
+          "operation": "replace",
+          "reference": "ll",
+          "candidate": "II",
+          "confidence": 0.46,
+          "reference_boxes": [
+            [
+              653,
+              905,
+              696,
+              981
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              653,
+              905,
+              696,
+              981
+            ]
+          ]
+        }
+      ],
+      "changed_area_percent": 0.6279
+    },
+    {
+      "id": "label-clean",
+      "reference": "label-master.png",
+      "candidate": "label-clean.png",
+      "positive": false,
+      "defects": [],
+      "predicted_positive": false,
+      "status": "PASS",
+      "registration_success": true,
+      "confidence": 1.0,
+      "seconds": 0.58,
+      "text_changes": [],
+      "changed_area_percent": 0.0
+    },
+    {
+      "id": "label-logo",
+      "reference": "label-master.png",
+      "candidate": "label-logo.png",
+      "positive": true,
+      "defects": [
+        "logo"
+      ],
+      "predicted_positive": true,
+      "status": "REVIEW REQUIRED",
+      "registration_success": true,
+      "confidence": 0.9959,
+      "seconds": 0.586,
+      "text_changes": [],
+      "changed_area_percent": 0.9779
+    },
+    {
+      "id": "label-shift",
+      "reference": "label-master.png",
+      "candidate": "label-shift.png",
+      "positive": true,
+      "defects": [
+        "shift"
+      ],
+      "predicted_positive": true,
+      "status": "REVIEW REQUIRED",
+      "registration_success": true,
+      "confidence": 0.9753,
+      "seconds": 0.578,
+      "text_changes": [],
+      "changed_area_percent": 1.093
+    },
+    {
+      "id": "label-copy",
+      "reference": "label-master.png",
+      "candidate": "label-copy.png",
+      "positive": true,
+      "defects": [
+        "copy"
+      ],
+      "predicted_positive": true,
+      "status": "REVIEW REQUIRED",
+      "registration_success": true,
+      "confidence": 0.9908,
+      "seconds": 0.589,
+      "text_changes": [
+        {
+          "operation": "replace",
+          "reference": "SOLAR:",
+          "candidate": "LUNAR:",
+          "confidence": 0.26,
+          "reference_boxes": [
+            [
+              77,
+              139,
+              306,
+              209
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              79,
+              139,
+              306,
+              209
+            ]
+          ]
+        },
+        {
+          "operation": "replace",
+          "reference": "ll",
+          "candidate": "Il",
+          "confidence": 0.47,
+          "reference_boxes": [
+            [
+              653,
+              905,
+              696,
+              981
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              653,
+              905,
+              696,
+              981
+            ]
+          ]
+        }
+      ],
+      "changed_area_percent": 0.8452
+    },
+    {
+      "id": "label-color",
+      "reference": "label-master.png",
+      "candidate": "label-color.png",
+      "positive": true,
+      "defects": [
+        "color"
+      ],
+      "predicted_positive": true,
+      "status": "FAIL",
+      "registration_success": true,
+      "confidence": 1.0,
+      "seconds": 0.6,
+      "text_changes": [
+        {
+          "operation": "replace",
+          "reference": "ll",
+          "candidate": "II",
+          "confidence": 0.47,
+          "reference_boxes": [
+            [
+              653,
+              905,
+              696,
+              981
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              653,
+              905,
+              696,
+              981
+            ]
+          ]
+        }
+      ],
+      "changed_area_percent": 16.6879
+    },
+    {
+      "id": "label-clip",
+      "reference": "label-master.png",
+      "candidate": "label-clip.png",
+      "positive": true,
+      "defects": [
+        "clip"
+      ],
+      "predicted_positive": true,
+      "status": "REVIEW REQUIRED",
+      "registration_success": true,
+      "confidence": 0.9873,
+      "seconds": 0.57,
+      "text_changes": [
+        {
+          "operation": "delete",
+          "reference": "\u00a9 2026",
+          "candidate": "",
+          "confidence": 0.95,
+          "reference_boxes": [
+            [
+              70,
+              866,
+              83,
+              879
+            ],
+            [
+              89,
+              866,
+              127,
+              879
+            ]
+          ],
+          "candidate_boxes": []
+        },
+        {
+          "operation": "replace",
+          "reference": "GOODS CONCEPT",
+          "candidate": "GOODS.",
+          "confidence": 0.69,
+          "reference_boxes": [
+            [
+              317,
+              866,
+              382,
+              879
+            ],
+            [
+              71,
+              894,
+              151,
+              906
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              317,
+              866,
+              382,
+              879
+            ]
+          ]
+        },
+        {
+          "operation": "replace",
+          "reference": "330 mL",
+          "candidate": "nL",
+          "confidence": 0.46,
+          "reference_boxes": [
+            [
+              71,
+              961,
+              102,
+              976
+            ],
+            [
+              110,
+              961,
+              148,
+              976
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              115,
+              961,
+              148,
+              976
+            ]
+          ]
+        }
+      ],
+      "changed_area_percent": 3.4331
+    },
+    {
+      "id": "label-barcode",
+      "reference": "label-master.png",
+      "candidate": "label-barcode.png",
+      "positive": true,
+      "defects": [
+        "barcode"
+      ],
+      "predicted_positive": true,
+      "status": "REVIEW REQUIRED",
+      "registration_success": true,
+      "confidence": 0.9894,
+      "seconds": 0.626,
+      "text_changes": [
+        {
+          "operation": "insert",
+          "reference": "",
+          "candidate": "SODA.",
+          "confidence": 0.26,
+          "reference_boxes": [],
+          "candidate_boxes": [
+            [
+              313,
+              157,
+              521,
+              224
+            ]
+          ]
+        },
+        {
+          "operation": "replace",
+          "reference": "ll I ll 5901234123457",
+          "candidate": "tt | | l 4006381333931",
+          "confidence": 0.28,
+          "reference_boxes": [
+            [
+              508,
+              905,
+              556,
+              981
+            ],
+            [
+              607,
+              905,
+              631,
+              981
+            ],
+            [
+              653,
+              905,
+              696,
+              981
+            ],
+            [
+              547,
+              997,
+              658,
+              1008
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              508,
+              905,
+              566,
+              981
+            ],
+            [
+              585,
+              905,
+              598,
+              981
+            ],
+            [
+              649,
+              905,
+              655,
+              981
+            ],
+            [
+              663,
+              905,
+              696,
+              981
+            ],
+            [
+              547,
+              997,
+              658,
+              1008
+            ]
+          ]
+        }
+      ],
+      "changed_area_percent": 0.9533
+    },
+    {
+      "id": "label-offset",
+      "reference": "label-master.png",
+      "candidate": "label-offset.png",
+      "positive": true,
+      "defects": [
+        "offset"
+      ],
+      "predicted_positive": true,
+      "status": "REVIEW REQUIRED",
+      "registration_success": true,
+      "confidence": 0.9368,
+      "seconds": 0.589,
+      "text_changes": [
+        {
+          "operation": "insert",
+          "reference": "",
+          "candidate": "SODA.",
+          "confidence": 0.25,
+          "reference_boxes": [],
+          "candidate_boxes": [
+            [
+              313,
+              157,
+              521,
+              224
+            ]
+          ]
+        },
+        {
+          "operation": "replace",
+          "reference": "ll",
+          "candidate": "|",
+          "confidence": 0.45,
+          "reference_boxes": [
+            [
+              508,
+              905,
+              556,
+              981
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              508,
+              905,
+              556,
+              981
+            ]
+          ]
+        },
+        {
+          "operation": "replace",
+          "reference": "ll",
+          "candidate": "Il",
+          "confidence": 0.46,
+          "reference_boxes": [
+            [
+              653,
+              905,
+              696,
+              981
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              653,
+              905,
+              696,
+              981
+            ]
+          ]
+        }
+      ],
+      "changed_area_percent": 0.0088
+    },
+    {
+      "id": "label-scale",
+      "reference": "label-master.png",
+      "candidate": "label-scale.png",
+      "positive": true,
+      "defects": [
+        "scale"
+      ],
+      "predicted_positive": true,
+      "status": "REVIEW REQUIRED",
+      "registration_success": true,
+      "confidence": 0.8492,
+      "seconds": 0.594,
+      "text_changes": [
+        {
+          "operation": "insert",
+          "reference": "",
+          "candidate": "SODA.",
+          "confidence": 0.29,
+          "reference_boxes": [],
+          "candidate_boxes": [
+            [
+              313,
+              157,
+              521,
+              224
+            ]
+          ]
+        },
+        {
+          "operation": "replace",
+          "reference": "ll",
+          "candidate": "Il",
+          "confidence": 0.41,
+          "reference_boxes": [
+            [
+              653,
+              905,
+              696,
+              981
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              653,
+              905,
+              696,
+              981
+            ]
+          ]
+        }
+      ],
+      "changed_area_percent": 0.3176
+    },
+    {
+      "id": "label-art",
+      "reference": "label-master.png",
+      "candidate": "label-art.png",
+      "positive": true,
+      "defects": [
+        "art"
+      ],
+      "predicted_positive": true,
+      "status": "REVIEW REQUIRED",
+      "registration_success": true,
+      "confidence": 0.9985,
+      "seconds": 0.565,
+      "text_changes": [],
+      "changed_area_percent": 0.3912
+    },
+    {
+      "id": "label-jpeg",
+      "reference": "label-master.png",
+      "candidate": "label-jpeg.jpg",
+      "positive": false,
+      "defects": [],
+      "predicted_positive": true,
+      "status": "REVIEW REQUIRED",
+      "registration_success": true,
+      "confidence": 0.9967,
+      "seconds": 0.61,
+      "text_changes": [
+        {
+          "operation": "replace",
+          "reference": "ll",
+          "candidate": "II",
+          "confidence": 0.47,
+          "reference_boxes": [
+            [
+              653,
+              905,
+              696,
+              981
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              653,
+              905,
+              696,
+              981
+            ]
+          ]
+        }
+      ],
+      "changed_area_percent": 0.052
+    },
+    {
+      "id": "toy-clean",
+      "reference": "toy-master.png",
+      "candidate": "toy-clean.png",
+      "positive": false,
+      "defects": [],
+      "predicted_positive": false,
+      "status": "PASS",
+      "registration_success": true,
+      "confidence": 1.0,
+      "seconds": 0.561,
+      "text_changes": [],
+      "changed_area_percent": 0.0
+    },
+    {
+      "id": "toy-logo",
+      "reference": "toy-master.png",
+      "candidate": "toy-logo.png",
+      "positive": true,
+      "defects": [
+        "logo"
+      ],
+      "predicted_positive": true,
+      "status": "REVIEW REQUIRED",
+      "registration_success": true,
+      "confidence": 0.9982,
+      "seconds": 0.569,
+      "text_changes": [],
+      "changed_area_percent": 0.9779
+    },
+    {
+      "id": "toy-shift",
+      "reference": "toy-master.png",
+      "candidate": "toy-shift.png",
+      "positive": true,
+      "defects": [
+        "shift"
+      ],
+      "predicted_positive": true,
+      "status": "REVIEW REQUIRED",
+      "registration_success": true,
+      "confidence": 0.9745,
+      "seconds": 0.566,
+      "text_changes": [],
+      "changed_area_percent": 1.093
+    },
+    {
+      "id": "toy-legal",
+      "reference": "toy-master.png",
+      "candidate": "toy-legal.png",
+      "positive": true,
+      "defects": [
+        "legal"
+      ],
+      "predicted_positive": true,
+      "status": "REVIEW REQUIRED",
+      "registration_success": true,
+      "confidence": 0.9681,
+      "seconds": 0.546,
+      "text_changes": [
+        {
+          "operation": "delete",
+          "reference": "\u00a9 2026 MAGNUS FICTIONAL GOODS CONCEPT SAMPLE. NOT FOR RETAIL SALE.",
+          "candidate": "",
+          "confidence": 0.61,
+          "reference_boxes": [
+            [
+              70,
+              866,
+              83,
+              879
+            ],
+            [
+              89,
+              866,
+              127,
+              879
+            ],
+            [
+              134,
+              866,
+              211,
+              879
+            ],
+            [
+              219,
+              866,
+              310,
+              879
+            ],
+            [
+              317,
+              866,
+              382,
+              879
+            ],
+            [
+              71,
+              894,
+              151,
+              906
+            ],
+            [
+              157,
+              894,
+              222,
+              906
+            ],
+            [
+              234,
+              894,
+              268,
+              906
+            ],
+            [
+              274,
+              894,
+              308,
+              906
+            ],
+            [
+              314,
+              894,
+              371,
+              906
+            ],
+            [
+              377,
+              894,
+              417,
+              906
+            ]
+          ],
+          "candidate_boxes": []
+        }
+      ],
+      "changed_area_percent": 0.7244
+    },
+    {
+      "id": "toy-color",
+      "reference": "toy-master.png",
+      "candidate": "toy-color.png",
+      "positive": true,
+      "defects": [
+        "color"
+      ],
+      "predicted_positive": true,
+      "status": "FAIL",
+      "registration_success": true,
+      "confidence": 0.9992,
+      "seconds": 0.578,
+      "text_changes": [
+        {
+          "operation": "replace",
+          "reference": "ll",
+          "candidate": "II",
+          "confidence": 0.47,
+          "reference_boxes": [
+            [
+              653,
+              905,
+              696,
+              981
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              653,
+              905,
+              696,
+              981
+            ]
+          ]
+        }
+      ],
+      "changed_area_percent": 16.6877
+    },
+    {
+      "id": "toy-clip",
+      "reference": "toy-master.png",
+      "candidate": "toy-clip.png",
+      "positive": true,
+      "defects": [
+        "clip"
+      ],
+      "predicted_positive": true,
+      "status": "REVIEW REQUIRED",
+      "registration_success": true,
+      "confidence": 0.9863,
+      "seconds": 0.565,
+      "text_changes": [
+        {
+          "operation": "delete",
+          "reference": "\u00a9 2026",
+          "candidate": "",
+          "confidence": 0.95,
+          "reference_boxes": [
+            [
+              70,
+              866,
+              83,
+              879
+            ],
+            [
+              89,
+              866,
+              127,
+              879
+            ]
+          ],
+          "candidate_boxes": []
+        },
+        {
+          "operation": "replace",
+          "reference": "GOODS CONCEPT",
+          "candidate": "GOODS, \u2018EPT",
+          "confidence": 0.28,
+          "reference_boxes": [
+            [
+              317,
+              866,
+              382,
+              879
+            ],
+            [
+              71,
+              894,
+              151,
+              906
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              317,
+              866,
+              382,
+              879
+            ],
+            [
+              120,
+              894,
+              151,
+              906
+            ]
+          ]
+        },
+        {
+          "operation": "replace",
+          "reference": "AGES",
+          "candidate": "5",
+          "confidence": 0.81,
+          "reference_boxes": [
+            [
+              70,
+              961,
+              124,
+              976
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              115,
+              966,
+              124,
+              976
+            ]
+          ]
+        }
+      ],
+      "changed_area_percent": 3.491
+    },
+    {
+      "id": "toy-barcode",
+      "reference": "toy-master.png",
+      "candidate": "toy-barcode.png",
+      "positive": true,
+      "defects": [
+        "barcode"
+      ],
+      "predicted_positive": true,
+      "status": "REVIEW REQUIRED",
+      "registration_success": true,
+      "confidence": 0.9906,
+      "seconds": 0.593,
+      "text_changes": [
+        {
+          "operation": "replace",
+          "reference": "ll I ll 5901234123457",
+          "candidate": "tt | | l 4006381333931",
+          "confidence": 0.31,
+          "reference_boxes": [
+            [
+              508,
+              905,
+              556,
+              981
+            ],
+            [
+              607,
+              905,
+              631,
+              981
+            ],
+            [
+              653,
+              905,
+              696,
+              981
+            ],
+            [
+              547,
+              997,
+              658,
+              1008
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              508,
+              905,
+              566,
+              981
+            ],
+            [
+              585,
+              905,
+              598,
+              981
+            ],
+            [
+              649,
+              905,
+              655,
+              981
+            ],
+            [
+              663,
+              905,
+              696,
+              981
+            ],
+            [
+              547,
+              997,
+              658,
+              1008
+            ]
+          ]
+        }
+      ],
+      "changed_area_percent": 0.9533
+    },
+    {
+      "id": "toy-offset",
+      "reference": "toy-master.png",
+      "candidate": "toy-offset.png",
+      "positive": true,
+      "defects": [
+        "offset"
+      ],
+      "predicted_positive": true,
+      "status": "REVIEW REQUIRED",
+      "registration_success": true,
+      "confidence": 0.9354,
+      "seconds": 0.584,
+      "text_changes": [
+        {
+          "operation": "replace",
+          "reference": "ll",
+          "candidate": "I",
+          "confidence": 0.36,
+          "reference_boxes": [
+            [
+              653,
+              905,
+              696,
+              981
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              652,
+              905,
+              696,
+              981
+            ]
+          ]
+        }
+      ],
+      "changed_area_percent": 1.7074
+    },
+    {
+      "id": "toy-scale",
+      "reference": "toy-master.png",
+      "candidate": "toy-scale.png",
+      "positive": true,
+      "defects": [
+        "scale"
+      ],
+      "predicted_positive": true,
+      "status": "REVIEW REQUIRED",
+      "registration_success": true,
+      "confidence": 0.8684,
+      "seconds": 0.587,
+      "text_changes": [
+        {
+          "operation": "replace",
+          "reference": "\u00a9",
+          "candidate": "|",
+          "confidence": 0.4,
+          "reference_boxes": [
+            [
+              534,
+              157,
+              568,
+              232
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              531,
+              157,
+              568,
+              231
+            ]
+          ]
+        },
+        {
+          "operation": "replace",
+          "reference": "ll",
+          "candidate": "| | |",
+          "confidence": 0.38,
+          "reference_boxes": [
+            [
+              508,
+              905,
+              556,
+              981
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              508,
+              905,
+              556,
+              981
+            ],
+            [
+              565,
+              905,
+              580,
+              981
+            ],
+            [
+              587,
+              905,
+              593,
+              981
+            ]
+          ]
+        },
+        {
+          "operation": "replace",
+          "reference": "ll",
+          "candidate": "lI",
+          "confidence": 0.45,
+          "reference_boxes": [
+            [
+              653,
+              905,
+              696,
+              981
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              653,
+              905,
+              696,
+              981
+            ]
+          ]
+        }
+      ],
+      "changed_area_percent": 3.2045
+    },
+    {
+      "id": "toy-art",
+      "reference": "toy-master.png",
+      "candidate": "toy-art.png",
+      "positive": true,
+      "defects": [
+        "art"
+      ],
+      "predicted_positive": true,
+      "status": "REVIEW REQUIRED",
+      "registration_success": true,
+      "confidence": 0.9995,
+      "seconds": 0.57,
+      "text_changes": [
+        {
+          "operation": "delete",
+          "reference": "ll",
+          "candidate": "",
+          "confidence": 0.61,
+          "reference_boxes": [
+            [
+              508,
+              905,
+              556,
+              981
+            ]
+          ],
+          "candidate_boxes": []
+        },
+        {
+          "operation": "replace",
+          "reference": "ll",
+          "candidate": "|",
+          "confidence": 0.47,
+          "reference_boxes": [
+            [
+              653,
+              905,
+              696,
+              981
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              684,
+              905,
+              696,
+              981
+            ]
+          ]
+        }
+      ],
+      "changed_area_percent": 0.3912
+    },
+    {
+      "id": "toy-jpeg",
+      "reference": "toy-master.png",
+      "candidate": "toy-jpeg.jpg",
+      "positive": false,
+      "defects": [],
+      "predicted_positive": true,
+      "status": "REVIEW REQUIRED",
+      "registration_success": true,
+      "confidence": 0.9941,
+      "seconds": 0.597,
+      "text_changes": [
+        {
+          "operation": "replace",
+          "reference": "ll",
+          "candidate": "II",
+          "confidence": 0.46,
+          "reference_boxes": [
+            [
+              653,
+              905,
+              696,
+              981
+            ]
+          ],
+          "candidate_boxes": [
+            [
+              653,
+              905,
+              696,
+              981
+            ]
+          ]
+        }
+      ],
+      "changed_area_percent": 0.0348
+    }
+  ]
+}
