@@ -31,7 +31,7 @@ def validate_profiles(value):
     if not isinstance(profiles, list) or len(profiles) > 100:
         raise ValueError("Keep at most 100 printer profiles")
     seen, result = set(), []
-    extra_fields = {"placement", "profile_name", "printer_notes", "spec_source"}
+    extra_fields = {"placement", "profile_name", "printer_notes", "spec_source", "pdf"}
     for profile in profiles:
         if not isinstance(profile, dict): raise ValueError("Each printer profile must be an object")
         ident, name, job = profile.get("id"), profile.get("name"), profile.get("job")
@@ -50,6 +50,11 @@ def validate_profiles(value):
         if "placement" in job and job["placement"] not in ("fit_trim", "fill_bleed"):
             raise ValueError("Unsupported production placement")
         checked.update({key: job[key] for key in extra_fields if key in job})
+        if "pdf" in job:
+            if job["pdf"] is None: checked.pop("pdf", None)
+            else:
+                from .production_pdf import validate_pdf_settings
+                checked["pdf"] = validate_pdf_settings(job["pdf"], require_profile=False)
         # Approval belongs to one reviewed job, never a reusable printer preset.
         checked["supplier_confirmed"] = False
         seen.add(ident)
@@ -294,6 +299,11 @@ def main(argv=None):
     sub = parser.add_subparsers(dest="command", required=True)
     check = sub.add_parser("preflight")
     check.add_argument("--input", type=Path, required=True); check.add_argument("--job", type=Path, required=True); check.add_argument("--output", type=Path, required=True)
+    finish = sub.add_parser("finalize-pdf", help="Convert a native vector draft using the selected printer ICC profile")
+    finish.add_argument("--input", type=Path, required=True)
+    finish.add_argument("--icc", type=Path, required=True)
+    finish.add_argument("--job", type=Path, required=True)
+    finish.add_argument("--output", type=Path, required=True)
     service = sub.add_parser("serve")
     service.add_argument("--data", type=Path, required=True); service.add_argument("--web", type=Path)
     service.add_argument("--port", type=int, default=0)
@@ -302,6 +312,15 @@ def main(argv=None):
         if args.input.stat().st_size > MAX_BYTES or args.job.stat().st_size > 32000: raise ValueError("Artwork or job exceeds the inspection limit")
         report = save_preflight(args.input.read_bytes(), json.loads(args.job.read_text()), args.output, args.input.name)
         print(json.dumps({"id": report["id"], "report_path": str((args.output / "report.json").resolve())}), flush=True)
+    elif args.command == "finalize-pdf":
+        if args.input.stat().st_size > MAX_BYTES or args.icc.stat().st_size > 16 * 1024 * 1024 or args.job.stat().st_size > 32000:
+            raise ValueError("The PDF, ICC profile or job exceeds the production export limit")
+        from .production_pdf import finalize_pdf
+        report = finalize_pdf(args.input, args.icc, json.loads(args.job.read_text(encoding="utf-8")), args.output)
+        receipt = {"id": report["id"], "report_path": str((args.output / "report.json").resolve())}
+        if report.get("status") == "pass_supported_checks":
+            receipt["pdf_path"] = str((args.output / "production.pdf").resolve())
+        print(json.dumps(receipt, allow_nan=False), flush=True)
     else:
         if not 0 <= args.port <= 65535: raise ValueError("Invalid local port")
         web = args.web or Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parents[2])) / "web"

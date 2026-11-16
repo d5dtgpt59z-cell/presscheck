@@ -64,6 +64,48 @@ export function defaultJob() {
   };
 }
 
+function normalizePDF(input) {
+  object(input, 'Production PDF');
+  const result = { schema_version: 1, target: 'cmyk_pdf', output_condition_identifier: '',
+    output_condition: '', registry_name: '', rendering_intent: 'relative_colorimetric',
+    black_point_compensation: false, black_policy: 'icc', text_mode: 'outlines' };
+  const allowed = new Set([...Object.keys(result), 'icc_profile']);
+  if (Object.keys(input).some(key => !allowed.has(key))) throw new Error('Unsupported production PDF field; keep profile bytes and paths separate.');
+  for (const [key, options] of Object.entries({ target: ['cmyk_pdf', 'pdfx4'],
+    rendering_intent: ['relative_colorimetric', 'perceptual', 'absolute_colorimetric', 'saturation'] })) {
+    if (own(input, key)) {
+      if (!options.includes(input[key])) throw new Error(`Unsupported production PDF ${key}.`);
+      result[key] = input[key];
+    }
+  }
+  for (const key of ['schema_version', 'black_policy', 'text_mode']) {
+    if (own(input, key) && input[key] !== result[key]) throw new Error(`Unsupported production PDF ${key}.`);
+  }
+  for (const [key, maximum] of Object.entries({ output_condition_identifier: 128, output_condition: 500, registry_name: 500 })) {
+    if (own(input, key)) {
+      result[key] = text(input[key], maximum, `PDF ${key}`);
+      if (/[\u0000-\u001f\u007f]/.test(result[key])) throw new Error(`Invalid production PDF ${key}.`);
+    }
+  }
+  if (result.registry_name) {
+    let url;
+    try { url = new URL(result.registry_name); } catch { throw new Error('Invalid PDF registry URL.'); }
+    if (!['http:', 'https:'].includes(url.protocol) || !url.hostname || url.username || url.password
+        || result.registry_name.includes('?') || result.registry_name.includes('#')) throw new Error('Use a PDF registry URL without credentials, query or fragment.');
+  }
+  if (own(input, 'black_point_compensation')) {
+    if (typeof input.black_point_compensation !== 'boolean') throw new Error('PDF black point compensation must be boolean.');
+    result.black_point_compensation = input.black_point_compensation;
+  }
+  if (own(input, 'icc_profile') && input.icc_profile !== null) {
+    const profile = object(input.icc_profile, 'ICC profile descriptor');
+    if (Object.keys(profile).some(key => !['sha256', 'name'].includes(key))
+        || typeof profile.sha256 !== 'string' || !/^[a-fA-F0-9]{64}$/.test(profile.sha256)) throw new Error('Invalid ICC profile descriptor.');
+    result.icc_profile = { sha256: profile.sha256, name: text(profile.name, 256, 'ICC profile name', true) };
+  }
+  return result;
+}
+
 export function normalizeJob(input) {
   object(input, 'Job');
   const job = defaultJob();
@@ -99,6 +141,7 @@ export function normalizeJob(input) {
     if (new Set(roles).size !== roles.length) throw new Error('expected_roles must not contain duplicate roles.');
     job.expected_roles = [...roles];
   }
+  if (own(input, 'pdf') && input.pdf !== null) job.pdf = normalizePDF(input.pdf);
   return job;
 }
 

@@ -5,7 +5,7 @@ permissions:
 jobs:
   tests:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -16,9 +16,27 @@ jobs:
           node-version: '24'
           cache: npm
           cache-dependency-path: frontend/package-lock.json
-      - run: sudo apt-get update && sudo apt-get install -y tesseract-ocr fonts-dejavu-core
+      - run: sudo apt-get update && sudo apt-get install -y build-essential curl xz-utils tesseract-ocr fonts-dejavu-core
+      - name: Cache pinned Ghostscript test engine
+        uses: actions/cache@v4
+        with:
+          path: work/ghostscript-ci/runtime
+          key: ghostscript-c20492bc8ebb96c87fa2e52a0926e1cda8cde95d66145e018ac713fed5da38cf-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('scripts/build_test_ghostscript.sh') }}
+      - name: Build and verify Ghostscript 10.08.0 with test-only ICC
+        run: bash scripts/build_test_ghostscript.sh
       - run: pip install -r requirements.txt
-      - run: PYTHONPATH=backend python -m pytest backend/tests -q
+      - name: Test backend with the real pinned PDF converter
+        run: |
+          PYTHONPATH=backend python -m pytest backend/tests -q --junitxml=/tmp/presscheck-backend-tests.xml
+          python - <<'PYTEST_CHECK'
+          from xml.etree import ElementTree as ET
+          report = ET.parse('/tmp/presscheck-backend-tests.xml')
+          converter = [case for case in report.iter('testcase') if 'test_production_pdf' in case.get('classname', '')]
+          assert converter, 'No production PDF converter tests were collected'
+          skipped = [case.get('name') for case in converter if case.find('skipped') is not None]
+          assert not skipped, 'Production PDF tests must run with the pinned engine and fixture: ' + str(skipped)
+          print('Production PDF tests executed without skips:', len(converter))
+          PYTEST_CHECK
       - name: Validate production workspace helpers
         run: node --test tests/*.test.mjs
         working-directory: frontend

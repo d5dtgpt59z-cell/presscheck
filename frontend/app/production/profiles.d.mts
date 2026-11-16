@@ -1,4 +1,11 @@
 export type LengthUnit = 'mm' | 'in';
+export type ProductionPDFSettings = {
+  schema_version: 1; target: 'cmyk_pdf' | 'pdfx4';
+  icc_profile?: { sha256: string; name: string };
+  output_condition_identifier: string; output_condition: string; registry_name: string;
+  rendering_intent: 'relative_colorimetric' | 'perceptual' | 'absolute_colorimetric' | 'saturation';
+  black_point_compensation: boolean; black_policy: 'icc'; text_mode: 'outlines';
+};
 export type ProductionJob = {
   schema_version: 1;
   workflow: 'trading_card' | 'packaging';
@@ -18,6 +25,7 @@ export type ProductionJob = {
   profile_name: string;
   printer_notes: string;
   spec_source: string;
+  pdf?: ProductionPDFSettings;
 };
 export type PrinterProfile = { id: string; name: string; job: ProductionJob };
 export function defaultJob(): ProductionJob;

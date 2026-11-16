@@ -5,6 +5,29 @@ import { defaultJob, normalizeJob, parseProfiles, exportProfiles, convertLength,
 const wrapper = profiles => JSON.stringify({ schema_version: 1, profiles });
 const profile = (job = {}) => ({ id: 'printer-1', name: 'Unverified printer specification', job });
 
+test('printer PDF metadata survives profile interchange without carrying profile bytes', () => {
+  const pdf = { schema_version: 1, target: 'pdfx4', icc_profile: { name: 'Printer condition', sha256: 'a'.repeat(64) },
+    output_condition_identifier: 'Custom Press 4', output_condition: 'Coated board', registry_name: 'https://www.color.org',
+    rendering_intent: 'perceptual', black_point_compensation: true, black_policy: 'icc', text_mode: 'outlines' };
+  const restored = parseProfiles(exportProfiles([profile({ pdf })]));
+  assert.deepEqual(restored[0].job.pdf, pdf);
+  restored[0].job.pdf.icc_profile.name = 'Changed copy';
+  assert.equal(pdf.icc_profile.name, 'Printer condition');
+  const partial = normalizeJob({ pdf: { target: 'pdfx4' } });
+  assert.equal(partial.pdf.output_condition_identifier, '');
+  assert.equal(Object.hasOwn(partial.pdf, 'icc_profile'), false);
+  assert.equal(Object.hasOwn(normalizeJob({ pdf: null }), 'pdf'), false);
+});
+
+test('PDF profile metadata rejects unsupported formats, executable locations and embedded assets', () => {
+  const bad = [{ target: 'pdfx1a' }, { schema_version: true }, { black_policy: 'invented' }, { text_mode: 'bitmap' },
+    { black_point_compensation: 'yes' }, { icc_path: '/local/printer.icc' }, { profile_data: 'bytes' },
+    { icc_profile: { name: 'Printer', sha256: 'bad' } },
+    { icc_profile: { name: 'Printer', sha256: 'a'.repeat(64), data: 'bytes' } },
+    { registry_name: 'https://user:secret@example.com' }, { output_condition: 'bad\nmetadata' }];
+  for (const pdf of bad) assert.throws(() => normalizeJob({ pdf }), undefined, JSON.stringify(pdf));
+});
+
 test('a new specification preserves unknown dimensions and unconfirmed supplier intent', () => {
   const first = defaultJob();
   assert.equal(first.name, 'Custom / unverified specification');

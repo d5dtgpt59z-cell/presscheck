@@ -42,6 +42,22 @@ Digital artwork checks also do not certify CMYK/ICC separations, ink coverage, t
 
 Normal Next.js keeps its existing API rewrite. `PRESSCHECK_DESKTOP_EXPORT=1` omits rewrites, enables static export/trailing slashes, and emits `frontend/out/production/index.html` for the bundled loopback server. Installed users do not need a runtime Node/Next server.
 
+## Native CMYK and PDF/X-4 delivery
+
+Magdobe's Production Setup can now import the user's printer CMYK ICC, choose a CMYK PDF or PDF/X-4 target, and pass a native RGB vector draft to the separately bundled converter. The CLI contract is:
+
+```sh
+PressCheckWorker finalize-pdf --input draft.pdf --icc printer.icc --job job.json --output new-output-directory
+```
+
+The job's optional `pdf` object contains schema version 1, target (`cmyk_pdf` or `pdfx4`), ICC descriptor (`name` and `sha256` only), output condition identifier/description, optional registry URL, rendering intent, black point compensation, `black_policy: "icc"` and `text_mode: "outlines"`. ICC bytes and paths do not enter job/profile JSON. Printer profile import/export and desktop persistence preserve validated PDF metadata. The web Production Studio continues to check SVG; conversion is the native app's dedicated local-worker operation.
+
+`production_pdf.py` validates the actual ICC and source vector subset, runs pinned Ghostscript 10.08.0 with an isolated environment and explicit file permissions, then asks `pdfx_audit.py` to inspect the written result through pikepdf/qpdf. Rendering intent and BPC are tested against independent LittleCMS conversions. The audit covers supported physical boxes, profile identity, PDF/X metadata where requested, process colors, live transparency and vector/no-raster output. PDF paint operations may be reconstructed; they are not persistent native object IDs.
+
+The small JSON receipt names the report and, on success, checked PDF. The output folder retains `report.json`, passive `report.html` and `production.pdf`. Only `pass_supported_checks` permits the native client to replace a destination. Technical failures retain a report without publishing a PDF; pre-existing output folders/files are preserved. No public HTTP conversion endpoint is introduced.
+
+These checks are not full independent ISO certification, ink-limit/spot/trapping validation, a contract proof or manufacturing approval. Automated examples use a clearly identified test profile. Real jobs require the printer's actual profile/specification and proof review.
+
 ## Verification
 
 From repository root:
@@ -61,3 +77,5 @@ test -f out/production/index.html
 ```
 
 Coverage includes native geometry/hierarchy order, physical SVG dimensions, closed sample outlines, safe attachments, invalid parameters, atomic-save failure, persistence across server restarts/new tokens, import bounds, unit precision and authorization transport. Native Swift decoding/validation is tested in Magdobe's integration fixture. These checks do not replace supplier approval or a physical proof.
+
+The PDF suite uses `MAGDOBE_GHOSTSCRIPT` and `MAGDOBE_TEST_ICC` for the pinned test engine and test-only output profile. Linux CI builds them from verified source with `scripts/build_test_ghostscript.sh` and fails if any PDF-specific tests skip. Production installs resolve the signed bundled sidecar and never search the user's PATH for a converter.
