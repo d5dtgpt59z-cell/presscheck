@@ -6,6 +6,7 @@ Set MAGDOBE_GHOSTSCRIPT and MAGDOBE_TEST_ICC to run the real conversion tests.
 import hashlib
 import io
 import json
+from datetime import datetime, timezone
 import os
 from pathlib import Path
 import signal
@@ -19,7 +20,7 @@ import pytest
 from PIL import Image, ImageCms
 
 from presscheck.pdfx_audit import audit_pdf
-from presscheck.pdfx_audit import _decoded
+from presscheck.pdfx_audit import _decoded, _pdf_date
 from presscheck.production_pdf import (
     _definition, _run, finalize_pdf, validate_icc, validate_pdf_settings,
 )
@@ -79,6 +80,17 @@ def test_profile_metadata_is_portable_and_partial_until_export():
     assert validate_pdf_settings(settings, True) == settings
 
 
+@pytest.mark.parametrize("suffix", ["Z", "Z00'00'", "Z00'00", "+00'00'", "-00'00'"])
+def test_pdf_utc_dates_accept_only_equivalent_zero_offsets(suffix):
+    assert _pdf_date("D:20261116184248"+suffix) == datetime(2026, 11, 16, 18, 42, 48, tzinfo=timezone.utc)
+
+
+@pytest.mark.parametrize("suffix", ["Z01'00'", "Z00'01'", "Z24'00'", "Z00'60'", "+24'00'", "-00'60'", "Zjunk"])
+def test_pdf_dates_reject_inconsistent_or_out_of_range_offsets(suffix):
+    with pytest.raises(ValueError):
+        _pdf_date("D:20261116184248"+suffix)
+
+
 @pytest.mark.parametrize("changes", [
     {"icc_path": "/private/profile.icc"}, {"profile_bytes": "secret"},
     {"target": "pdfx1a"}, {"text_mode": "editable"}, {"black_policy": "rich_black"},
@@ -110,7 +122,7 @@ def test_source_2199_paths_physical_boxes_and_transparency_are_inspected(tmp_pat
     path = tmp_path/"complex.pdf"
     make_pdf(path, 2199, alpha=True)
     result = audit_pdf(path, job(), source=True)
-    assert result["status"] == "pass_supported_checks", result
+    assert result["status"] == "pass_supported_checks", json.dumps(result["findings"], indent=2)
     assert result["metrics"]["vector_paths"] == 2199
     assert result["metrics"]["alpha_states"] > 0
     assert result["metrics"]["color_spaces"] == ["RGB"]
@@ -279,7 +291,7 @@ def test_real_converter_2199_paths_cmyk_alpha_outline_and_immutable_source(tmp_p
     icc_path.write_bytes(icc)
     config = job(icc, target)
     result = finalize_pdf(source_path, icc_path, config, tmp_path/"result", converter)
-    assert result["status"] == "pass_supported_checks", result
+    assert result["status"] == "pass_supported_checks", json.dumps(result["findings"], indent=2)
     assert result["output"]["source_vector_paths"] == 2199
     assert result["output"]["vector_paths"] > 0
     assert result["output"]["text_objects"] == result["output"]["raster_objects"] == 0
@@ -340,7 +352,7 @@ def test_requested_intent_and_bpc_match_independent_littlecms_color_values(tmp_p
             config["pdf"].update(rendering_intent=intent, black_point_compensation=bpc)
             output = tmp_path/f"{intent}-{int(bpc)}"
             report = finalize_pdf(source_path, icc_path, config, output, converter)
-            assert report["status"] == "pass_supported_checks", report
+            assert report["status"] == "pass_supported_checks", json.dumps(report["findings"], indent=2)
             assert report["output"]["vector_paths"] == 3
             assert report["output"]["raster_objects"] == report["output"]["text_objects"] == 0
             assert report["output"]["color_spaces"] == ["CMYK"]
@@ -371,6 +383,28 @@ def test_requested_intent_and_bpc_match_independent_littlecms_color_values(tmp_p
     assert source_path.read_bytes() == source and icc_path.read_bytes() == destination_icc
 
 
+def test_real_pdfx4_on_utc_host_preserves_date_and_xmp_equivalence(tmp_path, real_tools, monkeypatch):
+    import presscheck.production_pdf as production
+    converter, icc = real_tools
+    environment = production._environment
+    monkeypatch.setattr(production, "_environment", lambda directory: environment(directory) | {"TZ": "UTC"})
+    source_path, icc_path = tmp_path/"source.pdf", tmp_path/"printer.icc"
+    make_pdf(source_path)
+    icc_path.write_bytes(icc)
+    config = job(icc)
+    output = tmp_path/"output"
+    report = finalize_pdf(source_path, icc_path, config, output, converter)
+    assert report["status"] == "pass_supported_checks", json.dumps(report["findings"], indent=2)
+    with pikepdf.open(output/"production.pdf") as pdf:
+        # This is the exact emitted form that caused the Ubuntu CI failure.
+        assert str(pdf.docinfo["/CreationDate"]).endswith("Z00'00'")
+        assert _pdf_date(pdf.docinfo["/CreationDate"]).utcoffset().total_seconds() == 0
+        pdf.docinfo["/CreationDate"] = "D:20000101000000Z00'00'"
+        inconsistent = tmp_path/"inconsistent-date.pdf"
+        pdf.save(inconsistent, min_version="1.6")
+    failed(audit_pdf(inconsistent, config, icc), "dates are inconsistent")
+
+
 @pytest.mark.parametrize("tamper", ["rgb", "icc", "box", "xmp", "action", "font"])
 def test_generated_output_tampering_is_detected(tmp_path, real_tools, tamper):
     converter, icc = real_tools
@@ -379,7 +413,8 @@ def test_generated_output_tampering_is_detected(tmp_path, real_tools, tamper):
     icc_path.write_bytes(icc)
     config = job(icc)
     output = tmp_path/"result"
-    assert finalize_pdf(source_path, icc_path, config, output, converter)["status"] == "pass_supported_checks"
+    baseline = finalize_pdf(source_path, icc_path, config, output, converter)
+    assert baseline["status"] == "pass_supported_checks", json.dumps(baseline["findings"], indent=2)
     changed = tmp_path/"tampered.pdf"
     with pikepdf.open(output/"production.pdf") as pdf:
         page = pdf.pages[0]

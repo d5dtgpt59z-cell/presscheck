@@ -46,12 +46,15 @@ def _finite(value):
 
 
 def _pdf_date(value):
-    match = re.fullmatch(r"D:(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})(Z|[+-]\d{2}'?\d{2}'?)?", str(value))
+    # PDF's OHH'mm' timezone syntax permits Z with explicit zero offset.
+    # Ghostscript 10.08 emits Z00'00' on UTC hosts; a nonzero Z offset would
+    # contradict its meaning and remains invalid.
+    match = re.fullmatch(r"D:(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})(Z(?:00'00'?)?|[+-]\d{2}'?\d{2}'?)?", str(value))
     if not match:
         raise ValueError("Missing or unsupported PDF date")
     zone = match[7]
     tz = None
-    if zone == "Z":
+    if zone and zone.startswith("Z"):
         tz = timezone.utc
     elif zone:
         compact = zone.replace("'", "")
