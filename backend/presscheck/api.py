@@ -8,6 +8,8 @@ from .models import InspectionRequest
 from .ingestion import ingest, MAX_BYTES
 from .worker import start
 from . import __version__
+from .preflight_api import router as preflight_router
+from .structure_api import router as structure_router
 
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 
@@ -23,6 +25,8 @@ async def lifespan(app):
 app = FastAPI(
     title="PRESSCHECK Optical Systems", version=__version__, lifespan=lifespan
 )
+app.include_router(preflight_router)
+app.include_router(structure_router)
 
 
 @app.get("/api/health")

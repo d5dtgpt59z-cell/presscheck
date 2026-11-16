@@ -1,0 +1,28 @@
+export type LengthUnit = 'mm' | 'in';
+export type ProductionJob = {
+  schema_version: 1;
+  workflow: 'trading_card' | 'packaging';
+  name: string;
+  trim_width_mm: number | null;
+  trim_height_mm: number | null;
+  bleed_mm: number | null;
+  safe_mm: number | null;
+  bleed_intent: 'full_bleed' | 'white_border';
+  color_policy: 'review_rgb' | 'rgb' | 'cmyk';
+  min_text_pt: number | null;
+  min_stroke_mm: number | null;
+  min_raster_ppi: number | null;
+  expected_roles: string[];
+  supplier_confirmed: boolean;
+  placement: 'fit_trim' | 'fill_bleed';
+  profile_name: string;
+  printer_notes: string;
+  spec_source: string;
+};
+export type PrinterProfile = { id: string; name: string; job: ProductionJob };
+export function defaultJob(): ProductionJob;
+export function normalizeJob(input: unknown): ProductionJob;
+export function parseProfiles(source: string): PrinterProfile[];
+export function exportProfiles(profiles: unknown): string;
+export function convertLength(value: unknown, unit?: LengthUnit): number | null;
+export function parseLength(raw: unknown, unit?: LengthUnit): number | null;

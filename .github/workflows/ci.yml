@@ -19,6 +19,9 @@ jobs:
       - run: sudo apt-get update && sudo apt-get install -y tesseract-ocr fonts-dejavu-core
       - run: pip install -r requirements.txt
       - run: PYTHONPATH=backend python -m pytest backend/tests -q
+      - name: Validate production workspace helpers
+        run: node --test tests/*.test.mjs
+        working-directory: frontend
       - run: npm ci && npm run build && npx playwright install --with-deps chromium
         working-directory: frontend
       - name: Start real services

@@ -1550,3 +1550,12 @@ footer > span {
     grid-column: 1/-1;
   }
 }
+
+/* Additive launcher; Master Proof keeps its existing workflow. */
+.production-launch { display:flex; align-items:center; justify-content:space-between; gap:20px; border:2px solid var(--ink); background:var(--mustard); color:var(--ink); border-radius:4px; padding:16px 20px; margin:0 0 22px; text-decoration:none; box-shadow:3px 3px 0 var(--ink); }
+.production-launch strong { display:block; font:600 12px Plex,monospace; letter-spacing:.03em; }
+.production-launch small { display:block; font-size:13px; margin-top:5px; }
+.production-launch b { font:600 11px Plex,monospace; white-space:nowrap; }
+.production-launch:hover { background:#f0c759; }
+.production-launch:focus-visible { outline:3px solid var(--turquoise); outline-offset:4px; }
+@media(max-width:650px) { .production-launch { align-items:start; padding:14px; gap:15px; } .production-launch small { font-size:11px; } .production-launch b { font-size:9px; white-space:normal; text-align:right; } }

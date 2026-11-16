@@ -1,5 +1,9 @@
 import type { NextConfig } from "next";
-const nextConfig: NextConfig = {
+const desktopExport = process.env.PRESSCHECK_DESKTOP_EXPORT === "1";
+const nextConfig: NextConfig = desktopExport ? {
+  output: "export",
+  trailingSlash: true,
+} : {
   async rewrites() {
     return [
       {

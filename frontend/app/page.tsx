@@ -682,6 +682,10 @@ export default function Home() {
           PERFECTION IS A MOVING TARGET. <b>WE BROUGHT A SCOPE.</b>
         </p>
       </div>
+      <a className="production-launch" href="/production/">
+        <span><strong>NEW / PRODUCTION STUDIO</strong><small>SVG preflight · printer profiles · editable carton studies</small></span>
+        <b>OPEN STUDIO →</b>
+      </a>
       <section
         className="quick-start"
         aria-label="Three steps to inspect artwork"
